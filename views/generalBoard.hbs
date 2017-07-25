@@ -1,0 +1,228 @@
+ <html>
+  <head>
+    <link rel = "stylesheet" type = "text/css" href =  "/css/styles.css" />  
+  </head>
+  <body>
+    <div class="menu">
+      <div class="container-fluid">
+        <div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1>Create post</h1>
+          <form action="/boards/{{boardId}}/post" id="postform" method="POST">
+            <div class="form-group">
+              <label for="title">Title<span class="require">*</span></label>
+              <input type="text" class="form-control" name="title" />
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea rows="5" class="form-control" name="content" ></textarea>
+            </div> 
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" >
+                Create
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {{#each posts}}
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <div class="container">
+          <div class="col-sm-8">
+            <div class="panel panel-white post panel-shadow">
+              <div class="post-heading">
+                <div class="pull-left image">
+                  <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                </div>
+                <div class="pull-left meta">
+                  <div class="title h5">
+                    <a href="/users/{{this.post.postedBy.id}}">{{this.post.postedBy.firstName}} {{this.post.postedBy.lastName}}</a> made a post titled <b>{{this.post.title}}.</b>
+                  </div>
+                  <h6 class="text-muted time">{{this.post.createdAt}}</h6>
+                </div>
+              </div> 
+              <div class="post-description"> 
+                <p>{{this.post.content}}</p>
+                <div class="stats">
+                  {{#if this.own}}
+                    <small><a data-toggle="modal" data-target="#editModal">Edit</a></small>
+                    <small><a data-toggle="modal" data-target="#deleteModal">Delete</a></small>
+                  {{/if}}
+                  <div id="editModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                    <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Edit Post</h4>
+                        </div>
+                        <form action="/posts/{{this.post.id}}/edit" method="POST">
+                          <div class="form-group">
+                            <label for="title">Title<span class="require"></span></label>
+                            <input type="text" class="form-control" name="title" placeholder="{{this.post.title}}" />
+                          </div>
+                          <div class="form-group">
+                            <label for="title">Text<span class="require"></span></label>
+                            <textarea rows="5" class="form-control" name="text" placeholder="{{this.post.content}}" ></textarea>
+                          </div>
+                          <button type="submit" class="btn btn-default">Confirm</button>
+                        </form>                      
+                      </div>
+                    </div>
+                  </div>
+                  <div id="deleteModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Delete Post</h4>
+                        </div>
+                        <p>Are you sure you want to delete this post?</p>
+                        <form action="/posts/{{this.post._id}}/delete" method="POST">
+                          <button type="submit" class="btn btn-default">Delete</button>
+                        </form>                      
+                      </div>
+                    </div>
+                  </div>                                                                                       
+                </div>
+                <div class="post-footer">
+                  <form action="/posts/{{this.post.id}}/comment" method="POST">
+                    <div class="input-group"> 
+                      <textarea class="form-control" name="text" ></textarea>
+                      <button type="submit" class="btn btn-primary">Comment</button>
+                    </div>
+                  </form>                  
+                  <ul class="comments-list">
+                    {{#each this.post.comments}}
+                      <li class="comment">
+                        <a class="pull-left" href="#">
+                          <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
+                        </a>
+                        <div class="comment-body">
+                          <div class="comment-heading">
+                            <a href="/users/{{this.comment.postedBy.id}}"><h4 class="user">{{this.comment.postedBy.firstName}} {{this.comment.postedBy.lastName}}</h4></a>
+                            <h5 class="time">{{this.comment.createdAt}}</h5>
+                          </div>
+                          <p>{{this.comment.text}}</p>
+                          <div class="stats">
+                            {{#if this.own}}
+                              <small><a data-toggle="modal" data-target="#editCommentModal">Edit</a></small>
+                              <small><a data-toggle="modal" data-target="#deleteCommentModal">Delete</a></small>
+                            {{/if}}
+                            <div id="editCommentModal" class="modal fade" role="dialog">
+                              <div class="modal-dialog">
+                              <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Edit Comment</h4>
+                                  </div>
+                                  <form action="/comments/{{this.comment.id}}/edit" method="POST">
+                                    <div class="form-group">
+                                      <label for="title">Text<span class="require"></span></label>
+                                      <textarea rows="5" class="form-control" name="text" placeholder="{{this.comment.text}}" ></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Confirm</button>
+                                  </form>                      
+                                </div>
+                              </div>
+                            </div>
+                            <div id="deleteCommentModal" class="modal fade" role="dialog">
+                              <div class="modal-dialog">
+                              <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Delete Comment</h4>
+                                  </div>
+                                  <p>Are you sure you want to delete this comment?</p>
+                                  <form action="/comments/{{this.comment.id}}/delete" method="POST">
+                                    <button type="submit" class="btn btn-default">Delete</button>
+                                  </form>                      
+                                </div>
+                              </div>
+                            </div>                                                                                       
+                          </div>                           
+                          <form action="/comments/{{this.comment.id}}/comment" method="POST">                
+                            <div class="input-group"> 
+                              <textarea class="form-control" name="text" ></textarea>
+                              <button type="submit" class="btn btn-primary">Comment</button>
+                            </div>
+                          </form>
+                        </div>
+                        <ul class="comments-list">
+                          {{#each this.comment.comments}}
+                            <li class="comment">
+                              <a class="pull-left" href="#">
+                                <img class="avatar" src="http://bootdey.com/img/Content/user_3.jpg" alt="avatar">
+                              </a>
+                              <div class="comment-body">
+                                <div class="comment-heading">
+                                  <a href="/users/{{this.comment.postedBy.id}}"><h4 class="user">{{this.comment.postedBy.firstName}}  {{this.comment.postedBy.lastName}}</h4></a>
+                                  <h5 class="time">{{this.comment.createdAt}}</h5>
+                                </div>
+                                <p>{{this.comment.text}}</p>
+                                <div class="stats">
+                                {{#if this.own}}
+                                  <small><a data-toggle="modal" data-target="#editCommentOfCommentModal">Edit</a></small>
+                                  <small><a data-toggle="modal" data-target="#deleteCommentOfCommentModal">Delete</a></small>
+                                {{/if}}
+                                  <div id="editCommentOfCommentModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Edit Comment</h4>
+                                        </div>
+                                        <form action="/comments/{{this.comment.id}}/edit" method="POST">
+                                          <div class="form-group">
+                                            <label for="title">Text<span class="require"></span></label>
+                                            <textarea rows="5" class="form-control" name="text" placeholder="{{this.comment.text}}" ></textarea>
+                                          </div>
+                                          <button type="submit" class="btn btn-default">Confirm</button>
+                                        </form>                      
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div id="deleteCommentOfCommentModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                   <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Delete Comment</h4>
+                                        </div>
+                                        <p>Are you sure you want to delete this comment?</p>
+                                        <form action="/comments/{{this.comment.id}}/delete" method="POST">
+                                          <button type="submit" class="btn btn-default">Delete</button>
+                                        </form>                      
+                                      </div>
+                                    </div>
+                                  </div>                                                                                       
+                                </div>                                
+                              </div>
+                            </li>
+                          {{/each}}
+                        </ul>                     
+                      </li>
+                    {{/each}}
+                  </ul>
+                </div>                 
+              </div>             
+            </div>           
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </body>
+ </html> 

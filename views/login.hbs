@@ -1,0 +1,40 @@
+
+<div class="container-fluid" style="margin-top: 2em;">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <a href="/"><h2 style="text-align: center;">LOOP</h2></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Login</h3>
+        </div>
+        <div class="panel-body">
+          {{#if message}}
+            <div class="alert alert-danger">{{message}}</div>
+          {{/if}}
+          <form accept-charset="UTF-8" method='POST' action='/login'>
+            <fieldset>
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" name="username" type="">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" name="password" type="password" value="">
+              </div>
+              <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+              <p style="text-align: center; margin: 1em;">or</p>
+              <a class="btn btn-lg btn-primary btn-block" href="/facebook">Login with Facebook</a>
+              <hr>
+              <p><a href="#">Forgot your password?</a></p>                        
+              <p>New user? Sign up <a href="/signup">here</a></p>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
