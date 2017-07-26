@@ -67,3 +67,6 @@ typings/
 
 # Package lock
 package-lock.json
+
+# MacOS DS_Store file
+.DS_Store
