@@ -32,7 +32,7 @@ router.get('/boards/:id', function(req, res) {
               "postedBy": {
                 "id": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].id,
                 "firstName": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].firstName,
-                "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].lastName            
+                "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].lastName
               },
               "text": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].text
             }})
@@ -43,20 +43,20 @@ router.get('/boards/:id', function(req, res) {
               "postedBy": {
                 "id": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].id,
                 "firstName": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].firstName,
-                "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].lastName            
+                "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].postedBy[0].lastName
               },
               "text": realmBoard.events[realmBoard.events.length-1-i].comments[j].comments[k].text
             }})
-          }          
+          }
         }
         if (userCommentIds.indexOf(realmBoard.events[realmBoard.events.length-1-i].comments[j].id) > -1) {
           comments.push({"own": true, "comment": {
             "id": realmBoard.events[realmBoard.events.length-1-i].comments[j].id,
             "createdAt": moment(realmBoard.events[realmBoard.events.length-1-i].comments[j].createdAt).format('LLL'),
             "postedBy": {
-              "id": realmBoard.events[realmBoard.events.length-1-i].comments[j]].postedBy[0].id,
+              "id": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].id,
               "firstName": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].firstName,
-              "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].lastName            
+              "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].lastName
             },
             "text": realmBoard.events[realmBoard.events.length-1-i].comments[j].text,
             "comments": commentsOfComments
@@ -68,12 +68,12 @@ router.get('/boards/:id', function(req, res) {
             "postedBy": {
               "id": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].id,
               "firstName": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].firstName,
-              "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].lastName            
+              "lastName": realmBoard.events[realmBoard.events.length-1-i].comments[j].postedBy[0].lastName
             },
             "text": realmBoard.events[realmBoard.events.length-1-i].comments[j].text,
             "comments": commentsOfComments
           }})
-        }        
+        }
       }
       if (userEventIds.indexOf(realmBoard.events[realmBoard.events.length-1-i].id)>-1 && userAttendedEventIds.indexOf(realmBoard.events[realmBoard.events.length-1-i].id) >-1) {
         events.push({
@@ -131,7 +131,7 @@ router.get('/boards/:id', function(req, res) {
               "postedBy": {
                 "id": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].id,
                 "firstName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].firstName,
-                "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].lastName            
+                "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].lastName
               },
               "text": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].text
             }})
@@ -142,7 +142,7 @@ router.get('/boards/:id', function(req, res) {
               "postedBy": {
                 "id": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].id,
                 "firstName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].firstName,
-                "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].lastName            
+                "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].postedBy[0].lastName
               },
               "text": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].comments[k].text
             }})
@@ -156,7 +156,7 @@ router.get('/boards/:id', function(req, res) {
             "postedBy": {
               "id": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].id,
               "firstName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].firstName,
-              "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].lastName            
+              "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].lastName
             },
             "text": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].text,
             "comments": commentsOfComments
@@ -168,7 +168,7 @@ router.get('/boards/:id', function(req, res) {
             "postedBy": {
               "id": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].id,
               "firstName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].firstName,
-              "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].lastName            
+              "lastName": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].postedBy[0].lastName
             },
             "text": realmBoard.posts[realmBoard.posts.length-1-i].comments[j].text,
             "comments": commentsOfComments
@@ -197,7 +197,7 @@ router.get('/boards/:id', function(req, res) {
             "id": realmBoard.posts[realmBoard.posts.length-1-i].postedBy[0].id,
             "firstName": realmBoard.posts[realmBoard.posts.length-1-i].postedBy[0].firstName,
             "lastName": realmBoard.posts[realmBoard.posts.length-1-i].postedBy[0].lastName
-          },        
+          },
           "content": realmBoard.posts[realmBoard.posts.length-1-i].content,
           "comments": comments
         }})
@@ -212,11 +212,11 @@ router.post('/boards/:id/post', function(req, res) {
   var board = Realm.objects('Board').filtered(`id="${req.params.id}"`)[0]
   var boardPosts = Object.keys(board.posts).map(function (key) {
     return board.posts[key];
-  });  
+  });
   var userPosts = Object.keys(req.user.posts).map(function (key) {
     return req.user.posts[key];
-  });  
-  var id = shortid.generate()  
+  });
+  var id = shortid.generate()
   Realm.write( () => {
     Realm.create('Post', {
       id: id,
@@ -235,7 +235,7 @@ router.post('/boards/:id/post', function(req, res) {
   });
   Realm.write(() => {
     Realm.create('User', {id: req.user.id, posts: userPosts}, true);
-  });  
+  });
   res.redirect('/boards/'+req.params.id)
 })
 
@@ -327,7 +327,7 @@ router.post('/boards/:id/subscribe', function(req, res) {
   var userBoards = Realm.objects('User').filtered(`id="${req.user.id}"`)[0].subscribedBoards
   var userBoardsArr = Object.keys(userBoards).map(function (key) {
     return userBoards[key];
-  });  
+  });
   var board = Realm.objects('Board').filtered(`id="${req.params.id}"`)[0]
   userBoardsArr.push(board)
   Realm.write(() => {
@@ -338,7 +338,7 @@ router.post('/boards/:id/subscribe', function(req, res) {
 
 // Unsubscribe to board
 router.post('/boards/:id/unsubscribe', function(req, res) {
-  var userBoards = Realm.objects('User').filtered(`id="${req.user.id}"`)[0].subscribedBoards 
+  var userBoards = Realm.objects('User').filtered(`id="${req.user.id}"`)[0].subscribedBoards
   var userBoardsIdsArr = Object.keys(userBoards).map(function (key) {
     return userBoards[key].id;
   });
@@ -346,7 +346,7 @@ router.post('/boards/:id/unsubscribe', function(req, res) {
   var userBoardsArr = userBoards.slice(0, index).concat(userBoards.slice(index+1, userBoards.length))
   Realm.write(() => {
     Realm.create('User', {id: req.user.id, subscribedBoards: userBoardsArr}, true);
-  });  
+  });
   res.redirect('/')
 })
 

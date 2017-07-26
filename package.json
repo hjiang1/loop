@@ -1,13 +1,21 @@
 {
-  "name": "sketch2",
+  "name": "loop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjiang1/loop.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjiang1/loop/issues"
+  },
+  "homepage": "https://github.com/hjiang1/loop#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
@@ -16,6 +24,8 @@
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.4",
+    "moment": "^2.18.1",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "realm": "^1.10.0",
